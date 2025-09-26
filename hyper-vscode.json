@@ -1,0 +1,59 @@
+{
+	"description": "Hyper + VS Code Shortcuts (VS Code only)",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				},
+				{
+					"type": "frontmost_application_if",
+					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
+				}
+			],
+			"description": "Hyper + \\ → Split Editor (VS Code only)",
+			"from": {
+				"key_code": "backslash",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "backslash",
+					"modifiers": ["left_command"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				},
+				{
+					"type": "frontmost_application_if",
+					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
+				}
+			],
+			"description": "Hyper + T → Focus Terminal (VS Code only)",
+			"from": {
+				"key_code": "t",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "grave_accent_and_tilde",
+					"modifiers": ["left_control"]
+				}
+			],
+			"type": "basic"
+		}
+	]
+}

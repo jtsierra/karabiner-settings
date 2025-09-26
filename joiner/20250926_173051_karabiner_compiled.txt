@@ -1,0 +1,518 @@
+================================================================================
+PROJECT: KARABINER
+COMPILED ON: 2025-09-26 17:30:51
+TOTAL FILES: 9
+================================================================================
+
+----------------------------------------
+File: README.txt
+----------------------------------------
+## How It Works
+
+1. **Modular Files**: Each `hyper-*.json` file contains one keyboard modification rule
+2. **Compile Script**: `compile.sh` merges all `hyper-*.json` files into `karabiner.json`
+3. **Auto-Deploy**: The script automatically copies the compiled config to `~/.config/karabiner/karabiner.json`
+
+## Current Hotkeys
+
+### Navigation
+| Shortcut | Action |
+|----------|--------|
+| `Caps Lock` (hold) | Acts as Hyper modifier |
+| `Hyper + I` | Up Arrow |
+| `Hyper + J` | Left Arrow |
+| `Hyper + K` | Down Arrow |
+| `Hyper + L` | Right Arrow |
+| `Hyper + Backspace` | Forward Delete |
+
+### System
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + Q` | Switch Input Language |
+
+### Rectangle Window Management
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + W` | Window Top Half |
+| `Hyper + A` | Window Left Half |
+| `Hyper + S` | Window Bottom Half |
+| `Hyper + D` | Window Right Half |
+| `Hyper + C` | Window Centered |
+| `Hyper + Enter` | Window Maximize (Almost Full Screen) |
+
+### VS Code (only when VS Code is active)
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + \` | Split Editor |
+| `Hyper + T` | Focus Terminal |
+
+## Workflow
+
+### Adding a New Hotkey
+
+1. Create a new file: `hyper-<name>.json`
+2. Add your rule configuration
+3. Run `./compile.sh` to merge and deploy
+4. Test the hotkey in any application
+5. If it works, commit; if not, iterate
+
+### Testing Changes
+```bash
+# Make changes to any hyper-*.json file
+./compile.sh
+# Test immediately - changes are live in Karabiner
+
+----------------------------------------
+File: compile.sh
+----------------------------------------
+#!/bin/bash
+
+# Compile to local karabiner.json first
+cat > karabiner.json << 'EOF'
+{
+  "profiles": [{
+    "complex_modifications": {
+      "rules": [
+EOF
+
+# Add each rule
+first=true
+for file in hyper-*.json; do
+  if [ "$first" = true ]; then
+    cat "$file" | jq -c '.' >> karabiner.json
+    first=false
+  else
+    echo "," >> karabiner.json
+    cat "$file" | jq -c '.' >> karabiner.json
+  fi
+done
+
+# Close the JSON structure
+cat >> karabiner.json << 'EOF'
+      ]
+    },
+    "name": "Default profile",
+    "selected": true,
+    "virtual_hid_keyboard": {
+      "country_code": 0,
+      "keyboard_type_v2": "ansi"
+    }
+  }]
+}
+EOF
+
+# Copy to Karabiner config location
+cp karabiner.json ~/.config/karabiner/karabiner.json
+
+echo "✅ Compiled and copied to Karabiner config successfully!"
+echo "📍 Config updated at: ~/.config/karabiner/karabiner.json"
+
+----------------------------------------
+File: hyper-arrows.json
+----------------------------------------
+{
+	"description": "Hyper + IJKL as arrow keys",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + I → Up Arrow",
+			"from": {
+				"key_code": "i",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "up_arrow" }],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + J → Left Arrow",
+			"from": {
+				"key_code": "j",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "left_arrow" }],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + K → Down Arrow",
+			"from": {
+				"key_code": "k",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "down_arrow" }],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + L → Right Arrow",
+			"from": {
+				"key_code": "l",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "right_arrow" }],
+			"type": "basic"
+		}
+	]
+}
+
+
+----------------------------------------
+File: hyper-delete.json
+----------------------------------------
+{
+	"description": "Hyper + Backspace → Forward Delete",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Backspace → Delete Forward",
+			"from": {
+				"key_code": "delete_or_backspace",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "delete_forward" }],
+			"type": "basic"
+		}
+	]
+}
+
+
+----------------------------------------
+File: hyper-key.json
+----------------------------------------
+{
+	"description": "Caps Lock acts as Hyper",
+	"manipulators": [
+		{
+			"description": "Caps Lock → set hyper_caps_lock while held",
+			"from": {
+				"key_code": "caps_lock",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [
+				{
+					"set_variable": {
+						"name": "hyper_caps_lock",
+						"value": 1
+					}
+				}
+			],
+			"to_after_key_up": [
+				{
+					"set_variable": {
+						"name": "hyper_caps_lock",
+						"value": 0
+					}
+				}
+			],
+			"type": "basic"
+		}
+	]
+}
+
+
+----------------------------------------
+File: hyper-language.json
+----------------------------------------
+{
+	"description": "Hyper + Q → Switch Input Language",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Q → Switch to next input source",
+			"from": {
+				"key_code": "q",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "spacebar",
+					"modifiers": ["left_control"]
+				}
+			],
+			"type": "basic"
+		}
+	]
+}
+
+
+----------------------------------------
+File: hyper-rectangle.json
+----------------------------------------
+{
+	"description": "Hyper + WASD/C/Enter → Rectangle Window Management",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + W → Window Top Half",
+			"from": {
+				"key_code": "w",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "up_arrow",
+					"modifiers": ["left_control", "left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + A → Window Left Half",
+			"from": {
+				"key_code": "a",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "left_arrow",
+					"modifiers": ["left_control", "left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + S → Window Bottom Half",
+			"from": {
+				"key_code": "s",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "down_arrow",
+					"modifiers": ["left_control", "left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + D → Window Right Half",
+			"from": {
+				"key_code": "d",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "right_arrow",
+					"modifiers": ["left_control", "left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + C → Window Centered",
+			"from": {
+				"key_code": "c",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "c",
+					"modifiers": ["left_control", "left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Enter → Window Maximize (Almost Full Screen)",
+			"from": {
+				"key_code": "return_or_enter",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "return_or_enter",
+					"modifiers": ["left_control", "left_option"]
+				}
+			],
+			"type": "basic"
+		}
+	]
+}
+
+
+----------------------------------------
+File: hyper-vscode.json
+----------------------------------------
+{
+	"description": "Hyper + VS Code Shortcuts (VS Code only)",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				},
+				{
+					"type": "frontmost_application_if",
+					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
+				}
+			],
+			"description": "Hyper + \\ → Split Editor (VS Code only)",
+			"from": {
+				"key_code": "backslash",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "backslash",
+					"modifiers": ["left_command"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				},
+				{
+					"type": "frontmost_application_if",
+					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
+				}
+			],
+			"description": "Hyper + T → Focus Terminal (VS Code only)",
+			"from": {
+				"key_code": "t",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "grave_accent_and_tilde",
+					"modifiers": ["left_control"]
+				}
+			],
+			"type": "basic"
+		}
+	]
+}
+
+
+----------------------------------------
+File: karabiner.json
+----------------------------------------
+{
+  "profiles": [{
+    "complex_modifications": {
+      "rules": [
+{"description":"Hyper + IJKL as arrow keys","manipulators":[{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + I → Up Arrow","from":{"key_code":"i","modifiers":{"optional":["any"]}},"to":[{"key_code":"up_arrow"}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + J → Left Arrow","from":{"key_code":"j","modifiers":{"optional":["any"]}},"to":[{"key_code":"left_arrow"}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + K → Down Arrow","from":{"key_code":"k","modifiers":{"optional":["any"]}},"to":[{"key_code":"down_arrow"}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + L → Right Arrow","from":{"key_code":"l","modifiers":{"optional":["any"]}},"to":[{"key_code":"right_arrow"}],"type":"basic"}]}
+,
+{"description":"Hyper + Backspace → Forward Delete","manipulators":[{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + Backspace → Delete Forward","from":{"key_code":"delete_or_backspace","modifiers":{"optional":["any"]}},"to":[{"key_code":"delete_forward"}],"type":"basic"}]}
+,
+{"description":"Caps Lock acts as Hyper","manipulators":[{"description":"Caps Lock → set hyper_caps_lock while held","from":{"key_code":"caps_lock","modifiers":{"optional":["any"]}},"to":[{"set_variable":{"name":"hyper_caps_lock","value":1}}],"to_after_key_up":[{"set_variable":{"name":"hyper_caps_lock","value":0}}],"type":"basic"}]}
+,
+{"description":"Hyper + Q → Switch Input Language","manipulators":[{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + Q → Switch to next input source","from":{"key_code":"q","modifiers":{"optional":["any"]}},"to":[{"key_code":"spacebar","modifiers":["left_control"]}],"type":"basic"}]}
+,
+{"description":"Hyper + WASD/C/Enter → Rectangle Window Management","manipulators":[{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + W → Window Top Half","from":{"key_code":"w","modifiers":{"optional":["any"]}},"to":[{"key_code":"up_arrow","modifiers":["left_control","left_option"]}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + A → Window Left Half","from":{"key_code":"a","modifiers":{"optional":["any"]}},"to":[{"key_code":"left_arrow","modifiers":["left_control","left_option"]}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + S → Window Bottom Half","from":{"key_code":"s","modifiers":{"optional":["any"]}},"to":[{"key_code":"down_arrow","modifiers":["left_control","left_option"]}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + D → Window Right Half","from":{"key_code":"d","modifiers":{"optional":["any"]}},"to":[{"key_code":"right_arrow","modifiers":["left_control","left_option"]}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + C → Window Centered","from":{"key_code":"c","modifiers":{"optional":["any"]}},"to":[{"key_code":"c","modifiers":["left_control","left_option"]}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1}],"description":"Hyper + Enter → Window Maximize (Almost Full Screen)","from":{"key_code":"return_or_enter","modifiers":{"optional":["any"]}},"to":[{"key_code":"return_or_enter","modifiers":["left_control","left_option"]}],"type":"basic"}]}
+,
+{"description":"Hyper + VS Code Shortcuts (VS Code only)","manipulators":[{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1},{"type":"frontmost_application_if","bundle_identifiers":["^com\\.microsoft\\.VSCode$"]}],"description":"Hyper + \\ → Split Editor (VS Code only)","from":{"key_code":"backslash","modifiers":{"optional":["any"]}},"to":[{"key_code":"backslash","modifiers":["left_command"]}],"type":"basic"},{"conditions":[{"name":"hyper_caps_lock","type":"variable_if","value":1},{"type":"frontmost_application_if","bundle_identifiers":["^com\\.microsoft\\.VSCode$"]}],"description":"Hyper + T → Focus Terminal (VS Code only)","from":{"key_code":"t","modifiers":{"optional":["any"]}},"to":[{"key_code":"grave_accent_and_tilde","modifiers":["left_control"]}],"type":"basic"}]}
+      ]
+    },
+    "name": "Default profile",
+    "selected": true,
+    "virtual_hid_keyboard": {
+      "country_code": 0,
+      "keyboard_type_v2": "ansi"
+    }
+  }]
+}
+
+

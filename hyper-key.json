@@ -1,0 +1,29 @@
+{
+	"description": "Caps Lock acts as Hyper",
+	"manipulators": [
+		{
+			"description": "Caps Lock → set hyper_caps_lock while held",
+			"from": {
+				"key_code": "caps_lock",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [
+				{
+					"set_variable": {
+						"name": "hyper_caps_lock",
+						"value": 1
+					}
+				}
+			],
+			"to_after_key_up": [
+				{
+					"set_variable": {
+						"name": "hyper_caps_lock",
+						"value": 0
+					}
+				}
+			],
+			"type": "basic"
+		}
+	]
+}

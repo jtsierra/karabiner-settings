@@ -1,0 +1,28 @@
+{
+	"description": "Hyper + Q → Switch Input Language",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Q → Switch to next input source",
+			"from": {
+				"key_code": "q",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "spacebar",
+					"modifiers": ["left_control"]
+				}
+			],
+			"type": "basic"
+		}
+	]
+}
