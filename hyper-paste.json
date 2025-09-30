@@ -1,0 +1,28 @@
+{
+	"description": "Hyper + V → Paste Without Formatting",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + V → Paste and Match Style",
+			"from": {
+				"key_code": "v",
+				"modifiers": {
+					"optional": ["any"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "v",
+					"modifiers": ["left_command", "left_shift", "left_option"]
+				}
+			],
+			"type": "basic"
+		}
+	]
+}
