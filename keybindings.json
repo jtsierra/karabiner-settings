@@ -1,0 +1,16 @@
+// Place your key bindings in this file to override the defaults
+[
+	{
+		"key": "shift+cmd+r",
+		"command": "-rerunSearchEditorSearch",
+		"when": "inSearchEditor"
+	},
+	{
+		"key": "shift+cmd+r",
+		"command": "jupyter.restartkernelandrunallcells"
+	},
+	{
+		"key": "cmd+r",
+		"command": "python.execInTerminal-icon"
+	}
+]
