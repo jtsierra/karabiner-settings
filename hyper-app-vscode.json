@@ -148,9 +148,9 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Cmd + I → Page Up (VS Code only)",
+			"description": "Hyper + Cmd + O → Page Up (VS Code only)",
 			"from": {
-				"key_code": "i",
+				"key_code": "o",
 				"modifiers": {
 					"mandatory": ["left_command"]
 				}
@@ -174,9 +174,9 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Cmd + K → Page Down (VS Code only)",
+			"description": "Hyper + Cmd + L → Page Down (VS Code only)",
 			"from": {
-				"key_code": "k",
+				"key_code": "l",
 				"modifiers": {
 					"mandatory": ["left_command"]
 				}
@@ -200,9 +200,9 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Option + I → Top of document (VS Code only)",
+			"description": "Hyper + Option + O → Top of document (VS Code only)",
 			"from": {
-				"key_code": "i",
+				"key_code": "o",
 				"modifiers": {
 					"mandatory": ["left_option"]
 				}
@@ -227,9 +227,9 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Option + K → Bottom of document (VS Code only)",
+			"description": "Hyper + Option + L → Bottom of document (VS Code only)",
 			"from": {
-				"key_code": "k",
+				"key_code": "l",
 				"modifiers": {
 					"mandatory": ["left_option"]
 				}
