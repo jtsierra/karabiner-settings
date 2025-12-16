@@ -11,8 +11,7 @@
 			],
 			"description": "Hyper + O → Up Arrow",
 			"from": {
-				"key_code": "o",
-				"modifiers": { "optional": ["any"] }
+				"key_code": "o"
 			},
 			"to": [{ "key_code": "up_arrow" }],
 			"type": "basic"
@@ -27,8 +26,7 @@
 			],
 			"description": "Hyper + K → Left Arrow",
 			"from": {
-				"key_code": "k",
-				"modifiers": { "optional": ["any"] }
+				"key_code": "k"
 			},
 			"to": [{ "key_code": "left_arrow" }],
 			"type": "basic"
@@ -43,8 +41,7 @@
 			],
 			"description": "Hyper + L → Down Arrow",
 			"from": {
-				"key_code": "l",
-				"modifiers": { "optional": ["any"] }
+				"key_code": "l"
 			},
 			"to": [{ "key_code": "down_arrow" }],
 			"type": "basic"
@@ -59,8 +56,7 @@
 			],
 			"description": "Hyper + ; → Right Arrow",
 			"from": {
-				"key_code": "semicolon",
-				"modifiers": { "optional": ["any"] }
+				"key_code": "semicolon"
 			},
 			"to": [{ "key_code": "right_arrow" }],
 			"type": "basic"

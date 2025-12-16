@@ -1,0 +1,281 @@
+{
+	"description": "Hyper + Advanced Navigation (Word Movement, Line Movement, Scrolling)",
+	"manipulators": [
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Cmd + K → Move Left by Word",
+			"from": {
+				"key_code": "k",
+				"modifiers": {
+					"mandatory": ["left_command"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "left_arrow",
+					"modifiers": ["left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Cmd + ; → Move Right by Word",
+			"from": {
+				"key_code": "semicolon",
+				"modifiers": {
+					"mandatory": ["left_command"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "right_arrow",
+					"modifiers": ["left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Option + K → Start of Line",
+			"from": {
+				"key_code": "k",
+				"modifiers": {
+					"mandatory": ["left_option"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "left_arrow",
+					"modifiers": ["left_command"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Option + ; → End of Line",
+			"from": {
+				"key_code": "semicolon",
+				"modifiers": {
+					"mandatory": ["left_option"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "right_arrow",
+					"modifiers": ["left_command"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Shift + O → Select Up",
+			"from": {
+				"key_code": "o",
+				"modifiers": {
+					"mandatory": ["left_shift"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "up_arrow",
+					"modifiers": ["left_shift"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Shift + K → Select Left",
+			"from": {
+				"key_code": "k",
+				"modifiers": {
+					"mandatory": ["left_shift"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "left_arrow",
+					"modifiers": ["left_shift"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Shift + L → Select Down",
+			"from": {
+				"key_code": "l",
+				"modifiers": {
+					"mandatory": ["left_shift"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "down_arrow",
+					"modifiers": ["left_shift"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Shift + ; → Select Right",
+			"from": {
+				"key_code": "semicolon",
+				"modifiers": {
+					"mandatory": ["left_shift"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "right_arrow",
+					"modifiers": ["left_shift"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Shift + Cmd + K → Select Left by Word",
+			"from": {
+				"key_code": "k",
+				"modifiers": {
+					"mandatory": ["left_shift", "left_command"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "left_arrow",
+					"modifiers": ["left_shift", "left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Shift + Cmd + ; → Select Right by Word",
+			"from": {
+				"key_code": "semicolon",
+				"modifiers": {
+					"mandatory": ["left_shift", "left_command"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "right_arrow",
+					"modifiers": ["left_shift", "left_option"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Shift + Option + K → Select to Start of Line",
+			"from": {
+				"key_code": "k",
+				"modifiers": {
+					"mandatory": ["left_shift", "left_option"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "left_arrow",
+					"modifiers": ["left_shift", "left_command"]
+				}
+			],
+			"type": "basic"
+		},
+		{
+			"conditions": [
+				{
+					"name": "hyper_caps_lock",
+					"type": "variable_if",
+					"value": 1
+				}
+			],
+			"description": "Hyper + Shift + Option + ; → Select to End of Line",
+			"from": {
+				"key_code": "semicolon",
+				"modifiers": {
+					"mandatory": ["left_shift", "left_option"]
+				}
+			},
+			"to": [
+				{
+					"key_code": "right_arrow",
+					"modifiers": ["left_shift", "left_command"]
+				}
+			],
+			"type": "basic"
+		}
+	]
+}
