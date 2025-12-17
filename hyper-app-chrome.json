@@ -67,11 +67,11 @@
 					"bundle_identifiers": ["^com\\.google\\.Chrome$"]
 				}
 			],
-			"description": "Hyper + Cmd + O → Page Up (Chrome only)",
+			"description": "Hyper + Option + O → Page Up (Chrome only)",
 			"from": {
 				"key_code": "o",
 				"modifiers": {
-					"mandatory": ["left_command"]
+					"mandatory": ["left_option"]
 				}
 			},
 			"to": [
@@ -93,11 +93,11 @@
 					"bundle_identifiers": ["^com\\.google\\.Chrome$"]
 				}
 			],
-			"description": "Hyper + Cmd + L → Page Down (Chrome only)",
+			"description": "Hyper + Option + L → Page Down (Chrome only)",
 			"from": {
 				"key_code": "l",
 				"modifiers": {
-					"mandatory": ["left_command"]
+					"mandatory": ["left_option"]
 				}
 			},
 			"to": [
@@ -119,11 +119,11 @@
 					"bundle_identifiers": ["^com\\.google\\.Chrome$"]
 				}
 			],
-			"description": "Hyper + Option + O → Home (top of page) (Chrome only)",
+			"description": "Hyper + Cmd + O → Home (top of page) (Chrome only)",
 			"from": {
 				"key_code": "o",
 				"modifiers": {
-					"mandatory": ["left_option"]
+					"mandatory": ["left_command"]
 				}
 			},
 			"to": [
@@ -145,11 +145,11 @@
 					"bundle_identifiers": ["^com\\.google\\.Chrome$"]
 				}
 			],
-			"description": "Hyper + Option + L → End (bottom of page) (Chrome only)",
+			"description": "Hyper + Cmd + L → End (bottom of page) (Chrome only)",
 			"from": {
 				"key_code": "l",
 				"modifiers": {
-					"mandatory": ["left_option"]
+					"mandatory": ["left_command"]
 				}
 			},
 			"to": [

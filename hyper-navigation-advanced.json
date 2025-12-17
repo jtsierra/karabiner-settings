@@ -9,11 +9,11 @@
 					"value": 1
 				}
 			],
-			"description": "Hyper + Cmd + K → Move Left by Word",
+			"description": "Hyper + Option + K → Move Left by Word",
 			"from": {
 				"key_code": "k",
 				"modifiers": {
-					"mandatory": ["left_command"]
+					"mandatory": ["left_option"]
 				}
 			},
 			"to": [
@@ -32,11 +32,11 @@
 					"value": 1
 				}
 			],
-			"description": "Hyper + Cmd + ; → Move Right by Word",
+			"description": "Hyper + Option + ; → Move Right by Word",
 			"from": {
 				"key_code": "semicolon",
 				"modifiers": {
-					"mandatory": ["left_command"]
+					"mandatory": ["left_option"]
 				}
 			},
 			"to": [
@@ -55,11 +55,11 @@
 					"value": 1
 				}
 			],
-			"description": "Hyper + Option + K → Start of Line",
+			"description": "Hyper + Cmd + K → Start of Line",
 			"from": {
 				"key_code": "k",
 				"modifiers": {
-					"mandatory": ["left_option"]
+					"mandatory": ["left_command"]
 				}
 			},
 			"to": [
@@ -78,11 +78,11 @@
 					"value": 1
 				}
 			],
-			"description": "Hyper + Option + ; → End of Line",
+			"description": "Hyper + Cmd + ; → End of Line",
 			"from": {
 				"key_code": "semicolon",
 				"modifiers": {
-					"mandatory": ["left_option"]
+					"mandatory": ["left_command"]
 				}
 			},
 			"to": [
@@ -193,11 +193,11 @@
 					"value": 1
 				}
 			],
-			"description": "Hyper + Shift + Cmd + K → Select Left by Word",
+			"description": "Hyper + Shift + Option + K → Select Left by Word",
 			"from": {
 				"key_code": "k",
 				"modifiers": {
-					"mandatory": ["left_shift", "left_command"]
+					"mandatory": ["left_shift", "left_option"]
 				}
 			},
 			"to": [
@@ -216,11 +216,11 @@
 					"value": 1
 				}
 			],
-			"description": "Hyper + Shift + Cmd + ; → Select Right by Word",
+			"description": "Hyper + Shift + Option + ; → Select Right by Word",
 			"from": {
 				"key_code": "semicolon",
 				"modifiers": {
-					"mandatory": ["left_shift", "left_command"]
+					"mandatory": ["left_shift", "left_option"]
 				}
 			},
 			"to": [
@@ -239,11 +239,11 @@
 					"value": 1
 				}
 			],
-			"description": "Hyper + Shift + Option + K → Select to Start of Line",
+			"description": "Hyper + Shift + Cmd + K → Select to Start of Line",
 			"from": {
 				"key_code": "k",
 				"modifiers": {
-					"mandatory": ["left_shift", "left_option"]
+					"mandatory": ["left_shift", "left_command"]
 				}
 			},
 			"to": [
@@ -262,11 +262,11 @@
 					"value": 1
 				}
 			],
-			"description": "Hyper + Shift + Option + ; → Select to End of Line",
+			"description": "Hyper + Shift + Cmd + ; → Select to End of Line",
 			"from": {
 				"key_code": "semicolon",
 				"modifiers": {
-					"mandatory": ["left_shift", "left_option"]
+					"mandatory": ["left_shift", "left_command"]
 				}
 			},
 			"to": [

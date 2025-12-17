@@ -121,11 +121,11 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Cmd + O → Page Up (VS Code only)",
+			"description": "Hyper + Option + O → Page Up (VS Code only)",
 			"from": {
 				"key_code": "o",
 				"modifiers": {
-					"mandatory": ["left_command"]
+					"mandatory": ["left_option"]
 				}
 			},
 			"to": [
@@ -147,11 +147,11 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Cmd + L → Page Down (VS Code only)",
+			"description": "Hyper + Option + L → Page Down (VS Code only)",
 			"from": {
 				"key_code": "l",
 				"modifiers": {
-					"mandatory": ["left_command"]
+					"mandatory": ["left_option"]
 				}
 			},
 			"to": [
@@ -173,11 +173,11 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Option + O → Top of document (VS Code only)",
+			"description": "Hyper + Cmd + O → Top of document (VS Code only)",
 			"from": {
 				"key_code": "o",
 				"modifiers": {
-					"mandatory": ["left_option"]
+					"mandatory": ["left_command"]
 				}
 			},
 			"to": [
@@ -200,11 +200,11 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Option + L → Bottom of document (VS Code only)",
+			"description": "Hyper + Cmd + L → Bottom of document (VS Code only)",
 			"from": {
 				"key_code": "l",
 				"modifiers": {
-					"mandatory": ["left_option"]
+					"mandatory": ["left_command"]
 				}
 			},
 			"to": [
@@ -227,11 +227,11 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Cmd + K → Move Left by Word (VS Code only)",
+			"description": "Hyper + Option + K → Move Left by Word (VS Code only)",
 			"from": {
 				"key_code": "k",
 				"modifiers": {
-					"mandatory": ["left_command"]
+					"mandatory": ["left_option"]
 				}
 			},
 			"to": [
@@ -254,11 +254,11 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Cmd + ; → Move Right by Word (VS Code only)",
+			"description": "Hyper + Option + ; → Move Right by Word (VS Code only)",
 			"from": {
 				"key_code": "semicolon",
 				"modifiers": {
-					"mandatory": ["left_command"]
+					"mandatory": ["left_option"]
 				}
 			},
 			"to": [
@@ -281,11 +281,11 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Option + K → Start of Line (VS Code only)",
+			"description": "Hyper + Cmd + K → Start of Line (VS Code only)",
 			"from": {
 				"key_code": "k",
 				"modifiers": {
-					"mandatory": ["left_option"]
+					"mandatory": ["left_command"]
 				}
 			},
 			"to": [
@@ -308,11 +308,11 @@
 					"bundle_identifiers": ["^com\\.microsoft\\.VSCode$"]
 				}
 			],
-			"description": "Hyper + Option + ; → End of Line (VS Code only)",
+			"description": "Hyper + Cmd + ; → End of Line (VS Code only)",
 			"from": {
 				"key_code": "semicolon",
 				"modifiers": {
-					"mandatory": ["left_option"]
+					"mandatory": ["left_command"]
 				}
 			},
 			"to": [
